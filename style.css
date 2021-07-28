@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ body {
+   background: #F1F2B5;
+   background: -webkit-linear-gradient(to right, #135058, #F1F2B5);
+   background: linear-gradient(to right, #135058, #F1F2B5);
+    color: white;
+    font-family: 'Poppins';
+    min-height: 100vh;
+ }
+ header {
+     font-size: 1.5rem;
+ }
+ header, form {
+     min-height: 20vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+ }
+ form input, form button {
+     padding: 0.5rem;
+     font-size: 2rem;
+     border: none;
+     background: white;
+ }
+ form button {
+     color: #16525A;
+     cursor: pointer;
+ }
+ form button:hover {
+     background: #16525A;
+     color: white;
+ }
+ .todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
+ .todo-item {
+    list-style: none;
+ }
+ .user-text {
+    padding-right: 1rem;
+    border-right: solid green 2px;
+ }
+ .user-date {
+     padding-left: 1rem;
+     font-weight: bold;
+ }
+ .todo {
+     min-width: 30%;
+     margin: .5rem;
+     background: white;
+     color: black;
+     font-size: 1.5rem;
+     display: flex;
+     justify-content:space-between;
+     align-items: center;
+     padding-left: 10px;
+     transition: all 0.5s ease;
+ }
+ .todo li {
+     flex: 1;
+ }
+ .check-btn, .trash-btn  {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+ }
+ .check-btn {
+     margin-left: 10px;
+     color: green;
+     background: white;
+ }
+
+ .check-btn:hover {
+     background: green;
+     color: white;
+ }
+ .trash-btn {
+color: rgb(255, 0, 0);
+background: white;
+ 
+
+ }
+ .trash-btn:hover {
+     background: red;
+     color: white;
+ }
+ .fall {
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+ }
+ .completed {
+text-decoration: line-through;
+opacity: 0.2;
+ }
+ .filter-todo {
+    appearance: none;
+    outline: none;
+    border: none;
+ }
+ .select {
+     margin: 1rem;
+     position: relative;
+     overflow: hidden;
+ }
+ select {
+    height: 3.3rem;
+    width: 10rem;
+    padding: 1.2rem;
+ }
+ 
+ .select::after {
+    content: "\25BC";
+    position: absolute;
+    color: green;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+ }
+ .select:hover::after{
+     color: white;
+     background: green;
+ }
+ .fa-check, .fa-trash {
+     pointer-events: none;
+ }
+ .date-input::before {
+     content: "Deadline";
+     color: black;
+     font-weight: bold;
+     border-right: solid black 2px;
+     padding-right: 1rem;
+     margin-right: 1rem;
+ }
+ 
