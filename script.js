@@ -39,31 +39,35 @@ function sortByDate() {
   });
   removeAllTodo();
   sortable.forEach(function (value) {
-    let todoDiv = document.createElement("div");
-    let spanText = document.createElement("span");
-    spanText.innerText = value[0];
-    spanText.className = "user-text";
-    let spanDate = document.createElement("span");
-    spanDate.innerText = convert(value[1]);
-    spanDate.className = "user-date";
-    todoDiv.className = "todo";
-
-    const newTodo = document.createElement("li");
-    newTodo.className = "todo-item";
-    newTodo.appendChild(spanText);
-    newTodo.appendChild(spanDate);
-    todoDiv.appendChild(newTodo);
-
-    const completeBtn = document.createElement("button");
-    completeBtn.innerHTML = '<i class="fas fa-check"></i>';
-    completeBtn.className = "check-btn";
-    todoDiv.appendChild(completeBtn);
-    const trashBtn = document.createElement("button");
-    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
-    trashBtn.className = "trash-btn";
-    todoDiv.appendChild(trashBtn);
-    todoList.appendChild(todoDiv);
+    createTodo(value[0], value[1]);
   });
+}
+
+function createTodo(userText, userDate) {
+  let todoDiv = document.createElement("div");
+  let spanText = document.createElement("span");
+  spanText.innerText = userText;
+  spanText.className = "user-text";
+  let spanDate = document.createElement("span");
+  spanDate.innerText = convert(userDate);
+  spanDate.className = "user-date";
+  todoDiv.className = "todo";
+
+  const newTodo = document.createElement("li");
+  newTodo.className = "todo-item";
+  newTodo.appendChild(spanText);
+  newTodo.appendChild(spanDate);
+  todoDiv.appendChild(newTodo);
+
+  const completeBtn = document.createElement("button");
+  completeBtn.innerHTML = '<i class="fas fa-check"></i>';
+  completeBtn.className = "check-btn";
+  todoDiv.appendChild(completeBtn);
+  const trashBtn = document.createElement("button");
+  trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
+  trashBtn.className = "trash-btn";
+  todoDiv.appendChild(trashBtn);
+  todoList.appendChild(todoDiv);
 }
 
 function removeAllTodo() {
@@ -73,6 +77,7 @@ function removeAllTodo() {
   });
   console.log(todos);
 }
+
 function deleteCheck(e) {
   const todo = e.target;
   let par = todo.parentElement;
@@ -132,6 +137,7 @@ function filterTodo(e) {
     }
   });
 }
+
 function addTodo(e) {
   e.preventDefault();
   if (todoInput.value !== "") {
@@ -172,6 +178,7 @@ function addTodo(e) {
     sortByDate();
   }
 }
+
 function convert(date) {
   let curDate = new Date(date);
   curDate = `${
@@ -183,6 +190,7 @@ function convert(date) {
   }-${curDate.getFullYear()}`;
   return curDate;
 }
+
 function saveLocalTodos(todo, currentDate) {
   let todos, dates;
   if (localStorage.getItem("todos") === null) {
@@ -208,30 +216,7 @@ function getTodos() {
     dates = JSON.parse(localStorage.getItem("dates"));
   }
   todos.forEach(function (todo, i) {
-    let todoDiv = document.createElement("div");
-    let spanText = document.createElement("span");
-    spanText.innerText = todo;
-    spanText.className = "user-text";
-    let spanDate = document.createElement("span");
-    spanDate.innerText = convert(dates[i]);
-    spanDate.className = "user-date";
-    todoDiv.className = "todo";
-
-    const newTodo = document.createElement("li");
-    newTodo.className = "todo-item";
-    newTodo.appendChild(spanText);
-    newTodo.appendChild(spanDate);
-    todoDiv.appendChild(newTodo);
-
-    const completeBtn = document.createElement("button");
-    completeBtn.innerHTML = '<i class="fas fa-check"></i>';
-    completeBtn.className = "check-btn";
-    todoDiv.appendChild(completeBtn);
-    const trashBtn = document.createElement("button");
-    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
-    trashBtn.className = "trash-btn";
-    todoDiv.appendChild(trashBtn);
-    todoList.appendChild(todoDiv);
+    createTodo(todo, dates[i]);
   });
   sortByDate();
 }
